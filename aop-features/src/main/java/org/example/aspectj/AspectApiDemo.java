@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 编程方式创建@AspectJ动态代理
+ * 编程方式创建@AspectJ动态代理.
  */
 @Slf4j
 public class AspectApiDemo {

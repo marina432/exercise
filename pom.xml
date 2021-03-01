@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>aop-features</module>
+    <module>test-modules</module>
   </modules>
 
   <name>exercise</name>
@@ -23,6 +24,7 @@
     <spring.version>5.0.7.RELEASE</spring.version>
     <slf4j.version>1.7.7</slf4j.version>
     <lombok.version>1.18.12</lombok.version>
+    <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
   </properties>
 
 
@@ -95,14 +97,60 @@
       <version>2.8.0</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+    <dependency>
+      <groupId>org.reflections</groupId>
+      <artifactId>reflections</artifactId>
+      <version>0.9.11</version>
+    </dependency>
+
   </dependencies>
 
   <build>
     <plugins>
-      <plugin>
+      <!--<plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>-->
+
+      <!--生成<HTML风格>javadoc-->
+<!--      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven-javadoc-plugin.version}</version>
+        <configuration>
+          <top>
+            <![CDATA[Copyright 2020, <a href="">公司, Inc.</a>]]>
+          </top>
+          <aggregate>true</aggregate>
+          <sourcepath>src/main/java</sourcepath>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>-->
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven-javadoc-plugin.version}</version>
+        <configuration>
+          <doclet>ch.raffael.mddoclet.MarkdownDoclet</doclet>
+          <docletArtifact>
+            <groupId>ch.raffael.markdown-doclet</groupId>
+            <artifactId>markdown-doclet</artifactId>
+            <version>1.4</version>
+          </docletArtifact>
+          <useStandardDocletOptions>true</useStandardDocletOptions>
+        </configuration>
       </plugin>
+
     </plugins>
   </build>
 </project>
