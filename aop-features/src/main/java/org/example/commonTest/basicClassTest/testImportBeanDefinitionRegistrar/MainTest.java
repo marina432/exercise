@@ -17,5 +17,6 @@ public class MainTest {
         ApplicationContext ac = new AnnotationConfigApplicationContext(MainTest.class);
         System.out.println("容器启动完成");
         Arrays.stream(ac.getBeanDefinitionNames()).forEach(s -> System.out.println(s));
+        System.out.println(ac.getBean("justDoATest"));
     }
 }

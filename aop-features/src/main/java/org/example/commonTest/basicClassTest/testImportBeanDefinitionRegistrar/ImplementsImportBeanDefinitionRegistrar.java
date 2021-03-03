@@ -1,5 +1,7 @@
 package org.example.commonTest.basicClassTest.testImportBeanDefinitionRegistrar;
 
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
 import org.springframework.context.annotation.ComponentScan;
@@ -35,5 +37,8 @@ public class ImplementsImportBeanDefinitionRegistrar implements ImportBeanDefini
 
         scanner.addIncludeFilter(helloServiceFilter);
         scanner.scan(basePackages);
+
+        final AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(ImplementsImportBeanDefinitionRegistrar.class).getBeanDefinition();
+        beanDefinitionRegistry.registerBeanDefinition("justDoATest", beanDefinition);
     }
 }
